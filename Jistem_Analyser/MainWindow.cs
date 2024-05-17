@@ -4,6 +4,8 @@ using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Management;
+using System.Collections.Generic;
 
 namespace Jistem_Analyser
 {
@@ -13,14 +15,35 @@ namespace Jistem_Analyser
         {
             InitializeComponent();
             AtualizarNomeSistema();
+            GetMotherboardInfo();
+
             //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25)); // deixa a borda arredondada
-            pnlNav.Height = btnDashboard.Height;
-            pnlNav.Top = btnDashboard.Top;
-            pnlNav.Left = btnDashboard.Left;
+            pnlNav.Height = btnInicio.Height;
+            pnlNav.Top = btnInicio.Top;
+            pnlNav.Left = btnInicio.Left;
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRec, int nRightRect, int nBottomRect, int nWidthE11ipse, int nHeightE11ipse);
+
+        private void GetMotherboardInfo()
+        {
+            try
+            {
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_BaseBoard");
+
+                foreach (ManagementObject queryObj in searcher.Get())
+                {
+
+                    //lblProduct.Text = "Product: " + queryObj["Product"].ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while querying for WMI data: " + ex.Message);
+            }
+        }
 
         private void AtualizarNomeSistema()
         {
@@ -38,6 +61,19 @@ namespace Jistem_Analyser
         {
             WindowState = FormWindowState.Minimized;
         }
+
+
+
+
+
+
+
+
+
+        // Design --------------------------------------------------------------------------------------------------------
+
+
+
 
         private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
         {
@@ -62,16 +98,18 @@ namespace Jistem_Analyser
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            pnlNav.Height = btnDashboard.Height;
-            pnlNav.Top = btnDashboard.Top;
-            pnlNav.Left = btnDashboard.Left;
-            btnDashboard.BackColor = Color.FromArgb(26, 26, 26);
+            pnlNav.Height = btnInicio.Height;
+            pnlNav.Top = btnInicio.Top;
+            pnlNav.Left = btnInicio.Left;
+            btnInicio.BackColor = Color.FromArgb(26, 26, 26);
         }
 
         private void btnPlacaMae_Click(object sender, EventArgs e)
         {
+
             pnlNav.Height = btnPlacaMae.Height;
             pnlNav.Top = btnPlacaMae.Top;
+            pnlNav.Left = btnPlacaMae.Left; // Certifique-se de mover o pnlNav
             btnPlacaMae.BackColor = Color.FromArgb(26, 26, 26);
         }
 
@@ -79,6 +117,7 @@ namespace Jistem_Analyser
         {
             pnlNav.Height = btnMemoria.Height;
             pnlNav.Top = btnMemoria.Top;
+            pnlNav.Left = btnMemoria.Left; // Certifique-se de mover o pnlNav
             btnMemoria.BackColor = Color.FromArgb(26, 26, 26);
         }
 
@@ -86,17 +125,20 @@ namespace Jistem_Analyser
         {
             pnlNav.Height = btnVideo.Height;
             pnlNav.Top = btnVideo.Top;
+            pnlNav.Left = btnVideo.Left; // Certifique-se de mover o pnlNav
             btnVideo.BackColor = Color.FromArgb(26, 26, 26);
         }
+
         private void btnConfig_Click(object sender, EventArgs e)
         {
             pnlNav.Height = btnConfig.Height;
             pnlNav.Top = btnConfig.Top;
+            pnlNav.Left = btnConfig.Left; // Certifique-se de mover o pnlNav
             btnConfig.BackColor = Color.FromArgb(26, 26, 26);
         }
         private void btnDashboard_Leave(object sender, EventArgs e)
         {
-            btnDashboard.BackColor = Color.FromArgb(22, 22, 22);
+            btnInicio.BackColor = Color.FromArgb(22, 22, 22);
         }
 
         private void btnPlacaMae_Leave(object sender, EventArgs e)
@@ -116,10 +158,6 @@ namespace Jistem_Analyser
         private void btnConfig_Leave(object sender, EventArgs e)
         {
             btnConfig.BackColor = Color.FromArgb(22, 22, 22);
-        }
-        private void pnlHeader_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

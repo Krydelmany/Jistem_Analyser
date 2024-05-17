@@ -35,23 +35,22 @@
             this.btnVideo = new System.Windows.Forms.Button();
             this.btnMemoria = new System.Windows.Forms.Button();
             this.btnPlacaMae = new System.Windows.Forms.Button();
-            this.btnDashboard = new System.Windows.Forms.Button();
+            this.btnInicio = new System.Windows.Forms.Button();
             this.pnlProfile = new System.Windows.Forms.Panel();
             this.lbNomeSistema = new System.Windows.Forms.Label();
             this.lbBemVindo = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pctIcon = new System.Windows.Forms.PictureBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Logo_Jistem = new System.Windows.Forms.PictureBox();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlVisualLeft = new System.Windows.Forms.Panel();
+            this.ucPlacaMae = new Jistem_Analyser.NavigationControl.ucPlacaMae();
             this.pnlButons.SuspendLayout();
             this.pnlProfile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctIcon)).BeginInit();
             this.pnlHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo_Jistem)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlButons
@@ -62,7 +61,7 @@
             this.pnlButons.Controls.Add(this.btnVideo);
             this.pnlButons.Controls.Add(this.btnMemoria);
             this.pnlButons.Controls.Add(this.btnPlacaMae);
-            this.pnlButons.Controls.Add(this.btnDashboard);
+            this.pnlButons.Controls.Add(this.btnInicio);
             this.pnlButons.Controls.Add(this.pnlProfile);
             this.pnlButons.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlButons.Location = new System.Drawing.Point(2, 2);
@@ -143,36 +142,36 @@
             this.btnPlacaMae.Location = new System.Drawing.Point(0, 215);
             this.btnPlacaMae.Name = "btnPlacaMae";
             this.btnPlacaMae.Size = new System.Drawing.Size(186, 42);
-            this.btnPlacaMae.TabIndex = 1;
+            this.btnPlacaMae.TabIndex = 3;
             this.btnPlacaMae.Text = " Placa-Mãe";
             this.btnPlacaMae.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPlacaMae.UseVisualStyleBackColor = true;
             this.btnPlacaMae.Click += new System.EventHandler(this.btnPlacaMae_Click);
             this.btnPlacaMae.Leave += new System.EventHandler(this.btnPlacaMae_Leave);
             // 
-            // btnDashboard
+            // btnInicio
             // 
-            this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDashboard.FlatAppearance.BorderSize = 0;
-            this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashboard.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(243)))));
-            this.btnDashboard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashboard.Image")));
-            this.btnDashboard.Location = new System.Drawing.Point(0, 173);
-            this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(186, 42);
-            this.btnDashboard.TabIndex = 1;
-            this.btnDashboard.Text = " Início  ";
-            this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDashboard.UseVisualStyleBackColor = true;
-            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
-            this.btnDashboard.Leave += new System.EventHandler(this.btnDashboard_Leave);
+            this.btnInicio.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInicio.FlatAppearance.BorderSize = 0;
+            this.btnInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInicio.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(243)))));
+            this.btnInicio.Image = ((System.Drawing.Image)(resources.GetObject("btnInicio.Image")));
+            this.btnInicio.Location = new System.Drawing.Point(0, 173);
+            this.btnInicio.Name = "btnInicio";
+            this.btnInicio.Size = new System.Drawing.Size(186, 42);
+            this.btnInicio.TabIndex = 1;
+            this.btnInicio.Text = " Início  ";
+            this.btnInicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInicio.UseVisualStyleBackColor = true;
+            this.btnInicio.Click += new System.EventHandler(this.btnDashboard_Click);
+            this.btnInicio.Leave += new System.EventHandler(this.btnDashboard_Leave);
             // 
             // pnlProfile
             // 
             this.pnlProfile.Controls.Add(this.lbNomeSistema);
             this.pnlProfile.Controls.Add(this.lbBemVindo);
-            this.pnlProfile.Controls.Add(this.pictureBox1);
+            this.pnlProfile.Controls.Add(this.pctIcon);
             this.pnlProfile.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlProfile.Location = new System.Drawing.Point(0, 0);
             this.pnlProfile.Name = "pnlProfile";
@@ -201,41 +200,40 @@
             this.lbBemVindo.TabIndex = 2;
             this.lbBemVindo.Text = "Bem-vindo";
             // 
-            // pictureBox1
+            // pctIcon
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(52, 26);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(67, 59);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pctIcon.Image = ((System.Drawing.Image)(resources.GetObject("pctIcon.Image")));
+            this.pctIcon.Location = new System.Drawing.Point(52, 26);
+            this.pctIcon.Name = "pctIcon";
+            this.pctIcon.Size = new System.Drawing.Size(67, 59);
+            this.pctIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctIcon.TabIndex = 0;
+            this.pctIcon.TabStop = false;
             // 
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
-            this.pnlHeader.Controls.Add(this.pictureBox2);
+            this.pnlHeader.Controls.Add(this.Logo_Jistem);
             this.pnlHeader.Controls.Add(this.btnMinimize);
             this.pnlHeader.Controls.Add(this.btnClose);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(1, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(190, 2);
             this.pnlHeader.Margin = new System.Windows.Forms.Padding(0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(793, 39);
-            this.pnlHeader.TabIndex = 2;
-            this.pnlHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlHeader_Paint);
+            this.pnlHeader.Size = new System.Drawing.Size(792, 39);
+            this.pnlHeader.TabIndex = 1;
             this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
             // 
-            // pictureBox2
+            // Logo_Jistem
             // 
-            this.pictureBox2.Enabled = false;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(3, -4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(166, 50);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.Logo_Jistem.Enabled = false;
+            this.Logo_Jistem.Image = ((System.Drawing.Image)(resources.GetObject("Logo_Jistem.Image")));
+            this.Logo_Jistem.Location = new System.Drawing.Point(3, -4);
+            this.Logo_Jistem.Name = "Logo_Jistem";
+            this.Logo_Jistem.Size = new System.Drawing.Size(166, 50);
+            this.Logo_Jistem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Logo_Jistem.TabIndex = 2;
+            this.Logo_Jistem.TabStop = false;
             // 
             // btnMinimize
             // 
@@ -243,7 +241,7 @@
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
-            this.btnMinimize.Location = new System.Drawing.Point(691, 0);
+            this.btnMinimize.Location = new System.Drawing.Point(690, 0);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(51, 39);
             this.btnMinimize.TabIndex = 1;
@@ -256,7 +254,7 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(742, 0);
+            this.btnClose.Location = new System.Drawing.Point(741, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(51, 39);
             this.btnClose.TabIndex = 0;
@@ -265,32 +263,32 @@
             this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
             this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
             // 
-            // panel2
+            // pnlVisualLeft
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.panel2.Controls.Add(this.pnlHeader);
-            this.panel2.Controls.Add(this.panel1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(188, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(794, 558);
-            this.panel2.TabIndex = 3;
+            this.pnlVisualLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnlVisualLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlVisualLeft.Location = new System.Drawing.Point(188, 2);
+            this.pnlVisualLeft.Name = "pnlVisualLeft";
+            this.pnlVisualLeft.Size = new System.Drawing.Size(2, 558);
+            this.pnlVisualLeft.TabIndex = 2;
             // 
-            // panel1
+            // ucPlacaMae
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1, 558);
-            this.panel1.TabIndex = 0;
+            this.ucPlacaMae.BackColor = System.Drawing.Color.White;
+            this.ucPlacaMae.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucPlacaMae.Location = new System.Drawing.Point(190, 41);
+            this.ucPlacaMae.Name = "ucPlacaMae";
+            this.ucPlacaMae.Size = new System.Drawing.Size(792, 519);
+            this.ucPlacaMae.TabIndex = 3;
             // 
             // JystemAnalytics
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
             this.ClientSize = new System.Drawing.Size(984, 562);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.ucPlacaMae);
+            this.Controls.Add(this.pnlHeader);
+            this.Controls.Add(this.pnlVisualLeft);
             this.Controls.Add(this.pnlButons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -300,10 +298,9 @@
             this.pnlButons.ResumeLayout(false);
             this.pnlProfile.ResumeLayout(false);
             this.pnlProfile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctIcon)).EndInit();
             this.pnlHeader.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Logo_Jistem)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -320,13 +317,13 @@
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnMinimize;
-        private System.Windows.Forms.Button btnDashboard;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnInicio;
         private System.Windows.Forms.Label lbBemVindo;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox Logo_Jistem;
         private System.Windows.Forms.Panel pnlNav;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pctIcon;
+        private System.Windows.Forms.Panel pnlVisualLeft;
+        private NavigationControl.ucPlacaMae ucPlacaMae;
     }
 }
 
