@@ -15,7 +15,6 @@ namespace Jistem_Analyser
         {
             InitializeComponent();
             AtualizarNomeSistema();
-            GetMotherboardInfo();
 
             //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25)); // deixa a borda arredondada
             pnlNav.Height = btnInicio.Height;
@@ -26,24 +25,6 @@ namespace Jistem_Analyser
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRec, int nRightRect, int nBottomRect, int nWidthE11ipse, int nHeightE11ipse);
 
-        private void GetMotherboardInfo()
-        {
-            try
-            {
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_BaseBoard");
-
-                foreach (ManagementObject queryObj in searcher.Get())
-                {
-
-                    //lblProduct.Text = "Product: " + queryObj["Product"].ToString();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while querying for WMI data: " + ex.Message);
-            }
-        }
 
         private void AtualizarNomeSistema()
         {
