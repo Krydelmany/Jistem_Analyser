@@ -30,15 +30,16 @@ namespace Jistem_Analyser.NavigationControl
             {
                 // WMI para obter informações básicas da placa-mãe
                 ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_BaseBoard");
-
+                
                 foreach (ManagementObject queryObj in searcher.Get())
                 {
                     tbFabricante.Text = queryObj["Manufacturer"]?.ToString();
                     tbModelo.Text = queryObj["Product"]?.ToString();
                     tbVersao.Text = queryObj["Version"]?.ToString();
-                    tbBusSpecs.Text = queryObj["PartNumber"]?.ToString();
+                    tbBusSpecs.Text = queryObj["Name"]?.ToString();
                     tbChipset.Text = queryObj["SerialNumber"]?.ToString();
                 }
+                
 
                 // LibreHardwareMonitor para obter informações detalhadas do chipset
                 _computer = new Computer
@@ -71,6 +72,24 @@ namespace Jistem_Analyser.NavigationControl
                 _computer.Close();
             }
             catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while querying for hardware data: " + ex.Message);
+            }
+        }
+
+        private void GetBIOSInfo()
+        {
+            try
+            {
+                // WMI para obter informações básicas da placa-mãe
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_Bus");
+
+                foreach (ManagementObject queryObj in searcher.Get())
+                {
+                    tbBusSpecs.Text = queryObj["Name"]?.ToString();
+                    tbChipset.Text = queryObj["SerialNumber"]?.ToString();
+                }
+                catch (Exception ex) 
             {
                 MessageBox.Show("An error occurred while querying for hardware data: " + ex.Message);
             }

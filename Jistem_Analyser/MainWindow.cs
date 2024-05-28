@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.Management;
 using System.Collections.Generic;
+using Jistem_Analyser.NavigationControl;
 
 namespace Jistem_Analyser
 {
@@ -79,6 +80,10 @@ namespace Jistem_Analyser
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
+            ucInicio.Visible = true;
+            ucMemoria.Visible = false;
+            ucPlacaMae.Visible = false;
+
             pnlNav.Height = btnInicio.Height;
             pnlNav.Top = btnInicio.Top;
             pnlNav.Left = btnInicio.Left;
@@ -87,6 +92,9 @@ namespace Jistem_Analyser
 
         private void btnPlacaMae_Click(object sender, EventArgs e)
         {
+            ucPlacaMae.Visible = true;
+            ucInicio.Visible = false;
+            ucMemoria.Visible = false;
 
             pnlNav.Height = btnPlacaMae.Height;
             pnlNav.Top = btnPlacaMae.Top;
@@ -96,6 +104,10 @@ namespace Jistem_Analyser
 
         private void btnMemoria_Click(object sender, EventArgs e)
         {
+            ucPlacaMae.Visible = false;
+            ucInicio.Visible = false;
+            ucMemoria.Visible = true;
+
             pnlNav.Height = btnMemoria.Height;
             pnlNav.Top = btnMemoria.Top;
             pnlNav.Left = btnMemoria.Left; // Certifique-se de mover o pnlNav
@@ -112,10 +124,10 @@ namespace Jistem_Analyser
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
-            pnlNav.Height = btnConfig.Height;
-            pnlNav.Top = btnConfig.Top;
-            pnlNav.Left = btnConfig.Left; // Certifique-se de mover o pnlNav
-            btnConfig.BackColor = Color.FromArgb(26, 26, 26);
+            pnlNav.Height = btnSobre.Height;
+            pnlNav.Top = btnSobre.Top;
+            pnlNav.Left = btnSobre.Left; // Certifique-se de mover o pnlNav
+            btnSobre.BackColor = Color.FromArgb(26, 26, 26);
         }
         private void btnDashboard_Leave(object sender, EventArgs e)
         {
@@ -138,7 +150,7 @@ namespace Jistem_Analyser
         }
         private void btnConfig_Leave(object sender, EventArgs e)
         {
-            btnConfig.BackColor = Color.FromArgb(22, 22, 22);
+            btnSobre.BackColor = Color.FromArgb(22, 22, 22);
         }
     }
 }

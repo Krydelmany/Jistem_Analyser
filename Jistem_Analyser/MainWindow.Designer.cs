@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JystemAnalytics));
             this.pnlButons = new System.Windows.Forms.Panel();
             this.pnlNav = new System.Windows.Forms.Panel();
-            this.btnConfig = new System.Windows.Forms.Button();
+            this.btnSobre = new System.Windows.Forms.Button();
             this.btnVideo = new System.Windows.Forms.Button();
             this.btnMemoria = new System.Windows.Forms.Button();
             this.btnPlacaMae = new System.Windows.Forms.Button();
@@ -45,6 +45,8 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pnlVisualLeft = new System.Windows.Forms.Panel();
+            this.ucMemoria = new Jistem_Analyser.ucMemoria();
+            this.ucInicio = new Jistem_Analyser.NavigationControl.ucInicio();
             this.ucPlacaMae = new Jistem_Analyser.NavigationControl.ucPlacaMae();
             this.pnlButons.SuspendLayout();
             this.pnlProfile.SuspendLayout();
@@ -57,7 +59,7 @@
             // 
             this.pnlButons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
             this.pnlButons.Controls.Add(this.pnlNav);
-            this.pnlButons.Controls.Add(this.btnConfig);
+            this.pnlButons.Controls.Add(this.btnSobre);
             this.pnlButons.Controls.Add(this.btnVideo);
             this.pnlButons.Controls.Add(this.btnMemoria);
             this.pnlButons.Controls.Add(this.btnPlacaMae);
@@ -77,23 +79,23 @@
             this.pnlNav.Size = new System.Drawing.Size(3, 100);
             this.pnlNav.TabIndex = 0;
             // 
-            // btnConfig
+            // btnSobre
             // 
-            this.btnConfig.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnConfig.FlatAppearance.BorderSize = 0;
-            this.btnConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfig.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfig.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(243)))));
-            this.btnConfig.Image = ((System.Drawing.Image)(resources.GetObject("btnConfig.Image")));
-            this.btnConfig.Location = new System.Drawing.Point(0, 516);
-            this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(186, 42);
-            this.btnConfig.TabIndex = 1;
-            this.btnConfig.Text = " Configurações";
-            this.btnConfig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnConfig.UseVisualStyleBackColor = true;
-            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
-            this.btnConfig.Leave += new System.EventHandler(this.btnConfig_Leave);
+            this.btnSobre.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSobre.FlatAppearance.BorderSize = 0;
+            this.btnSobre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSobre.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSobre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(243)))));
+            this.btnSobre.Image = ((System.Drawing.Image)(resources.GetObject("btnSobre.Image")));
+            this.btnSobre.Location = new System.Drawing.Point(0, 516);
+            this.btnSobre.Name = "btnSobre";
+            this.btnSobre.Size = new System.Drawing.Size(186, 42);
+            this.btnSobre.TabIndex = 1;
+            this.btnSobre.Text = " Sobre";
+            this.btnSobre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSobre.UseVisualStyleBackColor = true;
+            this.btnSobre.Click += new System.EventHandler(this.btnConfig_Click);
+            this.btnSobre.Leave += new System.EventHandler(this.btnConfig_Leave);
             // 
             // btnVideo
             // 
@@ -272,6 +274,20 @@
             this.pnlVisualLeft.Size = new System.Drawing.Size(2, 558);
             this.pnlVisualLeft.TabIndex = 2;
             // 
+            // ucMemoria
+            // 
+            this.ucMemoria.Location = new System.Drawing.Point(187, 41);
+            this.ucMemoria.Name = "ucMemoria";
+            this.ucMemoria.Size = new System.Drawing.Size(792, 519);
+            this.ucMemoria.TabIndex = 5;
+            // 
+            // ucInicio
+            // 
+            this.ucInicio.Location = new System.Drawing.Point(190, 44);
+            this.ucInicio.Name = "ucInicio";
+            this.ucInicio.Size = new System.Drawing.Size(792, 516);
+            this.ucInicio.TabIndex = 4;
+            // 
             // ucPlacaMae
             // 
             this.ucPlacaMae.BackColor = System.Drawing.Color.White;
@@ -286,6 +302,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
             this.ClientSize = new System.Drawing.Size(984, 562);
+            this.Controls.Add(this.ucMemoria);
+            this.Controls.Add(this.ucInicio);
             this.Controls.Add(this.ucPlacaMae);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlVisualLeft);
@@ -313,7 +331,7 @@
         private System.Windows.Forms.Button btnVideo;
         private System.Windows.Forms.Button btnMemoria;
         private System.Windows.Forms.Button btnPlacaMae;
-        private System.Windows.Forms.Button btnConfig;
+        private System.Windows.Forms.Button btnSobre;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnMinimize;
@@ -324,6 +342,8 @@
         private System.Windows.Forms.PictureBox pctIcon;
         private System.Windows.Forms.Panel pnlVisualLeft;
         private NavigationControl.ucPlacaMae ucPlacaMae;
+        private NavigationControl.ucInicio ucInicio;
+        private ucMemoria ucMemoria;
     }
 }
 
