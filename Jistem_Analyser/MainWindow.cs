@@ -21,6 +21,13 @@ namespace Jistem_Analyser
             pnlNav.Height = btnInicio.Height;
             pnlNav.Top = btnInicio.Top;
             pnlNav.Left = btnInicio.Left;
+            ucInicio.Visible = true;
+            ucMemoria.Visible = false;
+            ucPlacaMae.Visible = false;
+            ucVideo.Visible = false;
+            ucCPU.Visible = false;
+            ucTeste.Visible = false;
+            ucSobre.Visible = false;
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -45,16 +52,7 @@ namespace Jistem_Analyser
         }
 
 
-
-
-
-
-
-
-
         // Design --------------------------------------------------------------------------------------------------------
-
-
 
 
         private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
@@ -83,6 +81,10 @@ namespace Jistem_Analyser
             ucInicio.Visible = true;
             ucMemoria.Visible = false;
             ucPlacaMae.Visible = false;
+            ucVideo.Visible = false;
+            ucCPU.Visible = false;
+            ucTeste.Visible = false;
+            ucSobre.Visible = false;
 
             pnlNav.Height = btnInicio.Height;
             pnlNav.Top = btnInicio.Top;
@@ -95,6 +97,10 @@ namespace Jistem_Analyser
             ucPlacaMae.Visible = true;
             ucInicio.Visible = false;
             ucMemoria.Visible = false;
+            ucVideo.Visible = false;
+            ucCPU.Visible = false;
+            ucTeste.Visible = false;
+            ucSobre.Visible = false;
 
             pnlNav.Height = btnPlacaMae.Height;
             pnlNav.Top = btnPlacaMae.Top;
@@ -107,6 +113,10 @@ namespace Jistem_Analyser
             ucPlacaMae.Visible = false;
             ucInicio.Visible = false;
             ucMemoria.Visible = true;
+            ucVideo.Visible = false;
+            ucCPU.Visible = false;
+            ucTeste.Visible = false;
+            ucSobre.Visible = false;
 
             pnlNav.Height = btnMemoria.Height;
             pnlNav.Top = btnMemoria.Top;
@@ -116,6 +126,14 @@ namespace Jistem_Analyser
 
         private void btnVideo_Click(object sender, EventArgs e)
         {
+            ucPlacaMae.Visible = false;
+            ucInicio.Visible = false;
+            ucMemoria.Visible = false;
+            ucVideo.Visible = true;
+            ucCPU.Visible = false;
+            ucTeste.Visible = false;
+            ucSobre.Visible = false;
+
             pnlNav.Height = btnVideo.Height;
             pnlNav.Top = btnVideo.Top;
             pnlNav.Left = btnVideo.Left; // Certifique-se de mover o pnlNav
@@ -124,11 +142,52 @@ namespace Jistem_Analyser
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
+            ucPlacaMae.Visible = false;
+            ucInicio.Visible = false;
+            ucMemoria.Visible = false;
+            ucVideo.Visible = false;
+            ucCPU.Visible = false;
+            ucTeste.Visible = false;
+            ucSobre.Visible = true;
+
             pnlNav.Height = btnSobre.Height;
             pnlNav.Top = btnSobre.Top;
             pnlNav.Left = btnSobre.Left; // Certifique-se de mover o pnlNav
             btnSobre.BackColor = Color.FromArgb(26, 26, 26);
         }
+
+        private void btnCPU_Click(object sender, EventArgs e)
+        {
+            ucPlacaMae.Visible = false;
+            ucInicio.Visible = false;
+            ucMemoria.Visible = false;
+            ucVideo.Visible = false;
+            ucCPU.Visible = true;
+            ucTeste.Visible = false;
+            ucSobre.Visible = false;
+
+            pnlNav.Height = btnCPU.Height;
+            pnlNav.Top = btnCPU.Top;
+            pnlNav.Left = btnCPU.Left; // Certifique-se de mover o pnlNav
+            btnCPU.BackColor = Color.FromArgb(26, 26, 26);
+        }
+
+        private void btnTeste_Click(object sender, EventArgs e)
+        {
+            ucPlacaMae.Visible = false;
+            ucInicio.Visible = false;
+            ucMemoria.Visible = false;
+            ucVideo.Visible = false;
+            ucCPU.Visible = false;
+            ucTeste.Visible = true;
+            ucSobre.Visible = false;
+
+            pnlNav.Height = btnTeste.Height;
+            pnlNav.Top = btnTeste.Top;
+            pnlNav.Left = btnTeste.Left; // Certifique-se de mover o pnlNav
+            btnTeste.BackColor = Color.FromArgb(26, 26, 26);
+        }
+
         private void btnDashboard_Leave(object sender, EventArgs e)
         {
             btnInicio.BackColor = Color.FromArgb(22, 22, 22);
@@ -151,6 +210,14 @@ namespace Jistem_Analyser
         private void btnConfig_Leave(object sender, EventArgs e)
         {
             btnSobre.BackColor = Color.FromArgb(22, 22, 22);
+        }
+        private void btnCPU_Leave(object sender, EventArgs e)
+        {
+            btnCPU.BackColor = Color.FromArgb(22, 22, 22);
+        }
+        private void btnTeste_Leave(object sender, EventArgs e)
+        {
+            btnTeste.BackColor = Color.FromArgb(22, 22, 22);
         }
     }
 }

@@ -10,19 +10,28 @@ using System.Text;
 using System.Threading.Tasks;
 using LibreHardwareMonitor.Hardware;
 using System.Windows.Forms;
+using LibreHardwareMonitor.Hardware.Motherboard;
+using System.Xml.Linq;
+using Microsoft.Win32;
 
 namespace Jistem_Analyser.NavigationControl
 {
     public partial class ucPlacaMae : UserControl
     {
-        private Computer _computer;
-
         public ucPlacaMae()
         {
             InitializeComponent();
             GetMotherboardInfo();
+            GetMotherboardDevice();
+            GetBIOSInfoKEY();
+            GetBiosInfo();
+
+            this.gbBIOS.Paint += new System.Windows.Forms.PaintEventHandler(this.gbPlacaMae_Paint);
             this.gbPlacaMae.Paint += new System.Windows.Forms.PaintEventHandler(this.gbPlacaMae_Paint);
+
         }
+
+
 
         private void GetMotherboardInfo()
         {
@@ -36,40 +45,9 @@ namespace Jistem_Analyser.NavigationControl
                     tbFabricante.Text = queryObj["Manufacturer"]?.ToString();
                     tbModelo.Text = queryObj["Product"]?.ToString();
                     tbVersao.Text = queryObj["Version"]?.ToString();
-                    tbBusSpecs.Text = queryObj["Name"]?.ToString();
-                    tbChipset.Text = queryObj["SerialNumber"]?.ToString();
+                    tbSerialNumber.Text = queryObj["SerialNumber"]?.ToString();
+                    tbDescricao.Text = queryObj["Description"]?.ToString();
                 }
-                
-
-                // LibreHardwareMonitor para obter informações detalhadas do chipset
-                _computer = new Computer
-                {
-                    IsMotherboardEnabled = true,
-                    IsCpuEnabled = true
-                };
-                _computer.Open();
-
-                foreach (var hardwareItem in _computer.Hardware)
-                {
-                    if (hardwareItem.HardwareType == HardwareType.GpuAmd)
-                    {
-                        hardwareItem.Update();
-                        tbChipset.Text = hardwareItem.Name;
-
-                        foreach (var subHardware in hardwareItem.SubHardware)
-                        {
-                            subHardware.Update();
-                            // Exibir mais detalhes do subHardware se necessário
-                        }
-                    }
-
-                    if (hardwareItem.HardwareType == HardwareType.Cpu)
-                    {
-                        tbCpu.Text = hardwareItem.Name;
-                    }
-                }
-
-                _computer.Close();
             }
             catch (Exception ex)
             {
@@ -77,23 +55,120 @@ namespace Jistem_Analyser.NavigationControl
             }
         }
 
-        private void GetBIOSInfo()
+        private void GetMotherboardDevice()
         {
             try
             {
                 // WMI para obter informações básicas da placa-mãe
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_Bus");
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_MotherboardDevice");
 
                 foreach (ManagementObject queryObj in searcher.Get())
                 {
-                    tbBusSpecs.Text = queryObj["Name"]?.ToString();
-                    tbChipset.Text = queryObj["SerialNumber"]?.ToString();
+                    tbPrimaryBus.Text = queryObj["PrimaryBusType"]?.ToString();
+                    tbSecondaryBus.Text = queryObj["SecondaryBusType"]?.ToString();
                 }
-                catch (Exception ex) 
+            }
+            catch (Exception)
             {
-                MessageBox.Show("An error occurred while querying for hardware data: " + ex.Message);
             }
         }
+
+        private void GetBiosInfo()
+        {
+            try
+            {
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_BIOS");
+
+                ManagementObjectCollection biosCollection = searcher.Get();
+                ManagementObject bios = biosCollection.Cast<ManagementObject>().FirstOrDefault();
+
+                foreach (ManagementObject queryObj in searcher.Get())
+                {
+                    // Nome da BIOS
+                    tbBiosName1.Text = queryObj["Name"] != null ? queryObj["Name"].ToString() : "N/A";
+
+                    // Versão da BIOS
+                    if (queryObj["BIOSVersion"] != null)
+                    {
+                        string versaoBios = bios["Version"]?.ToString();
+                        tbBiosName0.Text = versaoBios;
+                    }
+                    else
+                    {
+                        tbBiosName0.Text = "N/A";
+                    }
+
+                    // Fabricante da BIOS
+                    tbBiosManufacturer.Text = queryObj["Manufacturer"] != null ? queryObj["Manufacturer"].ToString() : "N/A";
+
+                    // Data de Liberação da BIOS
+                    if (queryObj["ReleaseDate"] != null)
+                    {
+                        DateTime releaseDate = ManagementDateTimeConverter.ToDateTime(queryObj["ReleaseDate"].ToString());
+                        tbBiosReleaseDate.Text = releaseDate.ToString("dd/MM/yyyy");
+                    }
+                    else
+                    {
+                        tbBiosReleaseDate.Text = "N/A";
+                    }
+
+                    // Número de Série da BIOS
+                    tbBiosSerialNumber.Text = queryObj["SerialNumber"] != null ? queryObj["SerialNumber"].ToString() : "N/A";
+
+                    // Versão do SMBIOS
+                    tbSmbiosVersion.Text = queryObj["SMBIOSBIOSVersion"] != null ? queryObj["SMBIOSBIOSVersion"].ToString() : "N/A";
+
+                    // Versão do Sistema BIOS
+                    if (queryObj["SMBIOSMajorVersion"] != null && queryObj["SMBIOSMinorVersion"] != null)
+                    {
+                        tbSystemBiosVersion.Text = $"{queryObj["SMBIOSMajorVersion"]}.{queryObj["SMBIOSMinorVersion"]}";
+                    }
+                    else
+                    {
+                        tbSystemBiosVersion.Text = "N/A";
+                    }
+
+                    // Características da BIOS
+                    if (queryObj["BiosCharacteristics"] != null)
+                    {
+                        tbBiosCharacteristics.Text = string.Join(", ", (ushort[])queryObj["BiosCharacteristics"]);
+                    }
+                    else
+                    {
+                        tbBiosCharacteristics.Text = "N/A";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while retrieving BIOS information: " + ex.Message);
+            }
+        }
+
+        private void GetBIOSInfoKEY()
+        {
+            // Caminho do registro para as informações do processador
+            string registryPath = @"HARDWARE\DESCRIPTION\System\BIOS";
+
+            try
+            {
+                // Abra a chave de registro
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(registryPath))
+                {
+                    if (key != null)
+                    {
+                        // Leia os valores do registro
+                        tbNomeProduto.Text = key.GetValue("SystemProductName")?.ToString();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while retrieving processor information: " + ex.Message);
+            }
+        }
+
 
         // Duas funções abaixo mudam as cores do gbPlacaMae -----------------------------------------
         private void gbPlacaMae_Paint(object sender, PaintEventArgs e)
@@ -101,7 +176,6 @@ namespace Jistem_Analyser.NavigationControl
             GroupBox box = sender as GroupBox;
             DrawGroupBox(box, e.Graphics, Color.FromArgb(202, 194, 197), Color.FromArgb(0, 198, 243), Color.FromArgb(28, 28, 28));
         }
-
         private void DrawGroupBox(GroupBox box, Graphics g, Color textColor, Color borderColor, Color backgroundColor)
         {
             if (box != null)

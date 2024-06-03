@@ -1,4 +1,6 @@
-﻿namespace Jistem_Analyser
+﻿using Jistem_Analyser.NavigationControl;
+
+namespace Jistem_Analyser
 {
     partial class JystemAnalytics
     {
@@ -31,6 +33,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JystemAnalytics));
             this.pnlButons = new System.Windows.Forms.Panel();
             this.pnlNav = new System.Windows.Forms.Panel();
+            this.btnTeste = new System.Windows.Forms.Button();
+            this.btnCPU = new System.Windows.Forms.Button();
             this.btnSobre = new System.Windows.Forms.Button();
             this.btnVideo = new System.Windows.Forms.Button();
             this.btnMemoria = new System.Windows.Forms.Button();
@@ -45,9 +49,13 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pnlVisualLeft = new System.Windows.Forms.Panel();
+            this.ucTeste = new Jistem_Analyser.NavigationControl.ucTeste();
+            this.ucCPU = new Jistem_Analyser.NavigationControl.ucCPU();
+            this.ucVideo = new Jistem_Analyser.NavigationControl.ucVideo();
             this.ucMemoria = new Jistem_Analyser.ucMemoria();
             this.ucInicio = new Jistem_Analyser.NavigationControl.ucInicio();
             this.ucPlacaMae = new Jistem_Analyser.NavigationControl.ucPlacaMae();
+            this.ucSobre = new Jistem_Analyser.NavigationControl.ucSobre();
             this.pnlButons.SuspendLayout();
             this.pnlProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctIcon)).BeginInit();
@@ -59,6 +67,8 @@
             // 
             this.pnlButons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
             this.pnlButons.Controls.Add(this.pnlNav);
+            this.pnlButons.Controls.Add(this.btnTeste);
+            this.pnlButons.Controls.Add(this.btnCPU);
             this.pnlButons.Controls.Add(this.btnSobre);
             this.pnlButons.Controls.Add(this.btnVideo);
             this.pnlButons.Controls.Add(this.btnMemoria);
@@ -78,6 +88,42 @@
             this.pnlNav.Name = "pnlNav";
             this.pnlNav.Size = new System.Drawing.Size(3, 100);
             this.pnlNav.TabIndex = 0;
+            // 
+            // btnTeste
+            // 
+            this.btnTeste.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTeste.FlatAppearance.BorderSize = 0;
+            this.btnTeste.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTeste.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTeste.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(243)))));
+            this.btnTeste.Image = ((System.Drawing.Image)(resources.GetObject("btnTeste.Image")));
+            this.btnTeste.Location = new System.Drawing.Point(0, 383);
+            this.btnTeste.Name = "btnTeste";
+            this.btnTeste.Size = new System.Drawing.Size(186, 42);
+            this.btnTeste.TabIndex = 5;
+            this.btnTeste.Text = " Teste    ";
+            this.btnTeste.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTeste.UseVisualStyleBackColor = true;
+            this.btnTeste.Click += new System.EventHandler(this.btnTeste_Click);
+            this.btnTeste.Leave += new System.EventHandler(this.btnTeste_Leave);
+            // 
+            // btnCPU
+            // 
+            this.btnCPU.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCPU.FlatAppearance.BorderSize = 0;
+            this.btnCPU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCPU.Font = new System.Drawing.Font("Cascadia Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(243)))));
+            this.btnCPU.Image = ((System.Drawing.Image)(resources.GetObject("btnCPU.Image")));
+            this.btnCPU.Location = new System.Drawing.Point(0, 341);
+            this.btnCPU.Name = "btnCPU";
+            this.btnCPU.Size = new System.Drawing.Size(186, 42);
+            this.btnCPU.TabIndex = 4;
+            this.btnCPU.Text = " CPU      ";
+            this.btnCPU.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCPU.UseVisualStyleBackColor = true;
+            this.btnCPU.Click += new System.EventHandler(this.btnCPU_Click);
+            this.btnCPU.Leave += new System.EventHandler(this.btnCPU_Leave);
             // 
             // btnSobre
             // 
@@ -274,18 +320,48 @@
             this.pnlVisualLeft.Size = new System.Drawing.Size(2, 558);
             this.pnlVisualLeft.TabIndex = 2;
             // 
+            // ucTeste
+            // 
+            this.ucTeste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.ucTeste.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucTeste.Location = new System.Drawing.Point(190, 41);
+            this.ucTeste.Name = "ucTeste";
+            this.ucTeste.Size = new System.Drawing.Size(792, 519);
+            this.ucTeste.TabIndex = 8;
+            // 
+            // ucCPU
+            // 
+            this.ucCPU.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.ucCPU.Location = new System.Drawing.Point(190, 41);
+            this.ucCPU.Name = "ucCPU";
+            this.ucCPU.Size = new System.Drawing.Size(792, 519);
+            this.ucCPU.TabIndex = 7;
+            // 
+            // ucVideo
+            // 
+            this.ucVideo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.ucVideo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucVideo.Location = new System.Drawing.Point(190, 41);
+            this.ucVideo.Name = "ucVideo";
+            this.ucVideo.Size = new System.Drawing.Size(792, 519);
+            this.ucVideo.TabIndex = 6;
+            // 
             // ucMemoria
             // 
-            this.ucMemoria.Location = new System.Drawing.Point(187, 41);
+            this.ucMemoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.ucMemoria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucMemoria.Location = new System.Drawing.Point(190, 41);
             this.ucMemoria.Name = "ucMemoria";
             this.ucMemoria.Size = new System.Drawing.Size(792, 519);
             this.ucMemoria.TabIndex = 5;
             // 
             // ucInicio
             // 
-            this.ucInicio.Location = new System.Drawing.Point(190, 44);
+            this.ucInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.ucInicio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucInicio.Location = new System.Drawing.Point(190, 41);
             this.ucInicio.Name = "ucInicio";
-            this.ucInicio.Size = new System.Drawing.Size(792, 516);
+            this.ucInicio.Size = new System.Drawing.Size(792, 519);
             this.ucInicio.TabIndex = 4;
             // 
             // ucPlacaMae
@@ -297,11 +373,24 @@
             this.ucPlacaMae.Size = new System.Drawing.Size(792, 519);
             this.ucPlacaMae.TabIndex = 3;
             // 
+            // ucSobre
+            // 
+            this.ucSobre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.ucSobre.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucSobre.Location = new System.Drawing.Point(190, 41);
+            this.ucSobre.Name = "ucSobre";
+            this.ucSobre.Size = new System.Drawing.Size(792, 519);
+            this.ucSobre.TabIndex = 9;
+            // 
             // JystemAnalytics
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
             this.ClientSize = new System.Drawing.Size(984, 562);
+            this.Controls.Add(this.ucSobre);
+            this.Controls.Add(this.ucTeste);
+            this.Controls.Add(this.ucCPU);
+            this.Controls.Add(this.ucVideo);
             this.Controls.Add(this.ucMemoria);
             this.Controls.Add(this.ucInicio);
             this.Controls.Add(this.ucPlacaMae);
@@ -344,6 +433,12 @@
         private NavigationControl.ucPlacaMae ucPlacaMae;
         private NavigationControl.ucInicio ucInicio;
         private ucMemoria ucMemoria;
+        private ucVideo ucVideo;
+        private ucCPU ucCPU;
+        private System.Windows.Forms.Button btnCPU;
+        private ucTeste ucTeste;
+        private System.Windows.Forms.Button btnTeste;
+        private ucSobre ucSobre;
     }
 }
 
